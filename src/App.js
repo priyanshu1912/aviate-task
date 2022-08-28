@@ -1,24 +1,37 @@
-import logo from './logo.svg';
-import './App.css';
+import "./App.css";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import Sidebar from "./components/Sidebar";
+import Dashboard from "./views/Dashboard";
+import Applied from "./views/Applied";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
+    <BrowserRouter>
+      <div
+        style={{
+          width: "100%",
+          display: "flex",
+          fontFamily: "Poppins",
+          fontSize: "15px",
+          justifyContent: "flex-end",
+        }}
+      >
+        <Sidebar />
+        <div
+          style={{
+            width: "80%",
+            background: "#F8F8F8",
+            minHeight: "100vh",
+            boxSizing: "border-box",
+          }}
         >
-          Learn React
-        </a>
-      </header>
-    </div>
+          <Routes>
+            <Route path="/" element={<Dashboard />} />
+            <Route path="/applied" exact element={<Applied />} />
+          </Routes>
+        </div>
+      </div>
+    </BrowserRouter>
   );
 }
 
